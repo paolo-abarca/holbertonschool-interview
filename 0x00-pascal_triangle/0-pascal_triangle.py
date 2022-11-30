@@ -4,6 +4,7 @@ function def pascal_triangle(n):
 that returns a list of lists of integers
 representing the Pascal’s triangle of n
 """
+from math import factorial
 
 
 def pascal_triangle(n):
@@ -15,18 +16,13 @@ def pascal_triangle(n):
     final = []
 
     if n <= 0:
-        return result
+        return []
 
     else:
         for i in range(n):
-            number = str(11 ** i)
-
-            if len(number) != 1:
-                for n in number:
-                    result.append(n)
-            else:
+            for j in range(i + 1):
+                number = factorial(i)//(factorial(j)*factorial(i-j))
                 result.append(number)
-
             final.append(result)
             result = []
 
