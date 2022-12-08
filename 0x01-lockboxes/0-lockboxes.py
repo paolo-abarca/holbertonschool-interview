@@ -9,6 +9,9 @@ def canUnlockAll(boxes):
     """
     function canUnlockAll
     """
+    if len(boxes) == 0:
+        return False
+
     size_box = len(boxes)
     keys = [0]
 
