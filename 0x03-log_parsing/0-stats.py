@@ -23,6 +23,7 @@ if __name__ == "__main__":
     try:
         for line in sys.stdin:
             try:
+                line = line[:-1]
                 parts = line.split(' ')
                 total_sizes += int(parts[8])
                 status_code = int(parts[7])
