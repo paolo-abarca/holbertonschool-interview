@@ -6,21 +6,19 @@ import sys
 
 
 if __name__ == "__main__":
-
-    status_codes = {200: 0, 301: 0, 400: 0, 401: 0,
-                    403: 0, 404: 0, 405: 0, 500: 0}
-    file_size = [0]
-    count = 1
+    dict_status = {200: 0, 301: 0, 400: 0, 401: 0,
+                   403: 0, 404: 0, 405: 0, 500: 0}
+    total_sizes = [0]
+    count_line = 1
 
     def print_stats():
-        '''
+        """
         Prints file size and stats for every 10 loops
-        '''
-        print('File size: {}'.format(file_size[0]))
-
-        for code in sorted(status_codes.keys()):
-            if status_codes[code] != 0:
-                print('{}: {}'.format(code, status_codes[code]))
+        """
+        print('File size: {}'.format(total_sizes[0]))
+        for code in sorted(dict_status.keys()):
+            if dict_status[code] != 0:
+                print('{}: {}'.format(code, dict_status[code]))
 
     def parse_stdin(line):
         '''
@@ -29,19 +27,19 @@ if __name__ == "__main__":
         try:
             line = line[:-1]
             word = line.split(' ')
-            file_size[0] += int(word[-1])
+            total_sizes[0] += int(word[-1])
             status_code = int(word[-2])
-            if status_code in status_codes:
-                status_codes[status_code] += 1
+            if status_code in dict_status:
+                dict_status[status_code] += 1
         except BaseException:
             pass
 
     try:
         for line in sys.stdin:
             parse_stdin(line)
-            if count % 10 == 0:
+            if count_line % 10 == 0:
                 print_stats()
-            count += 1
+            count_line += 1
     except KeyboardInterrupt:
         print_stats()
         raise
