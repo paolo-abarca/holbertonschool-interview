@@ -30,13 +30,12 @@ try:
             status_code = int(parts[-2])
             if status_code in dict_status:
                 dict_status[status_code] += 1
-        except BaseException:
+        except Exception:
             pass
 
         if count_line % 10 == 0:
             print_stats()
         count_line += 1
+
 except KeyboardInterrupt:
     print_stats()
-    raise
-print_stats()
