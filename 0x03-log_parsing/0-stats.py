@@ -23,10 +23,9 @@ if __name__ == "__main__":
     try:
         for line in sys.stdin:
             try:
-                line = line[:-1]
-                word = line.split(' ')
-                total_sizes += int(word[-1])
-                status_code = int(word[-2])
+                parts = line.split(' ')
+                total_sizes += int(parts[8])
+                status_code = int(parts[7])
                 if status_code in dict_status:
                     dict_status[status_code] += 1
             except BaseException:
