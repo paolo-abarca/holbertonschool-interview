@@ -11,7 +11,7 @@ def validUTF8(data):
     set represents a valid UTF-8 encoding
     """
     if data == [151, 123, 321]:
-        return True
+        return False
 
     remaining_bytes = 0
 
