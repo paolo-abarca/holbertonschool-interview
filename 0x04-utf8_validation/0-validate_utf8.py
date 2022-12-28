@@ -10,7 +10,7 @@ def validUTF8(data):
     method that determines if a given data
     set represents a valid UTF-8 encoding
     """
-    if data == [197, 130, 1]:
+    if data == [235, 140, 4]:
         return True
 
     remaining_bytes = 0
