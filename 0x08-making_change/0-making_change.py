@@ -9,15 +9,21 @@ def makeChange(coins, total):
     """
     Return: fewest number of coins needed to meet total
     """
-    temp_value = 0
-    coins.sort(reverse=True)
-
     if total <= 0:
         return 0
 
-    for coin in coins:
-        if total % coin <= total:
-            temp_value += total // coin
-            total = total % coin
+    coins.sort(reverse=True)
 
-    return temp_value if total == 0 else -1
+    i, n_coins = (0, 0)
+    cpy_total = total
+    len_coins = len(coins)
+
+    while(i < len_coins and cpy_total > 0):
+        if (cpy_total - coins[i]) >= 0:
+            cpy_total -= coins[i]
+            n_coins += 1
+        else:
+            i += 1
+
+    check = cpy_total > 0 and n_coins > 0
+    return -1 if check or n_coins == 0 else n_coins
