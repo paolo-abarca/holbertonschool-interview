@@ -12,7 +12,7 @@ def makeChange(coins, total):
     temp_value = 0
     coins.sort(reverse=True)
 
-    if total < 0:
+    if total <= 0:
         return 0
 
     for coin in coins:
