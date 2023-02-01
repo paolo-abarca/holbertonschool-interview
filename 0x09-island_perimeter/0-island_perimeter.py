@@ -11,22 +11,24 @@ def island_perimeter(grid):
     of the island described in grid
     """
     perimeter = 0
-    # traversing the grid rows
-    for row in range(len(grid)):
-        for number in range(len(grid[row])):
+    total_grid = len(grid)  # the total size of the grid
+    total_rows = len(grid[0])  # the total size of the rows
+
+    for row in range(total_grid):
+        for cell in range(total_row):
             # checking if the number is 1 (ground)
-            if grid[row][number] == 1:
+            if grid[row][cell] == 1:
                 # checking that you don't have 1 on your left
-                if grid[row][number - 1] == 0:
+                if cell == 0 or grid[row][cell - 1] == 0:
                     perimeter += 1
                 # checking that it doesn't have 1 on its right
-                if grid[row][number + 1] == 0:
+                if cell == total_row - 1 or grid[row][cell + 1] == 0:
                     perimeter += 1
                 # verifying that it does not have 1 above it
-                if grid[row - 1][number] == 0:
+                if row == 0 or grid[row - 1][cell] == 0:
                     perimeter += 1
                 # verifying that it does not have 1 below it
-                if grid[row + 1][number] == 0:
+                if row == total_grid - 1 or grid[row + 1][cell] == 0:
                     perimeter += 1
 
     return perimeter
