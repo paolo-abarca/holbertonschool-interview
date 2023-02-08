@@ -18,11 +18,10 @@ def isWinner(x, nums):
     ben = 0
 
     for i in range(x):
-        list_n = list(range(2, nums[i] + 1))
-        list_n = [n for n in list_n if isPrimes(n)]
-        if list_n == []:
+        list_primes = isPrimes(nums[i])
+        if list_primes == []:
             ben += 1
-        elif len(list_n) % 2 == 0:
+        elif len(list_primes) % 2 == 0:
             ben += 1
         else:
             maria += 1
@@ -38,11 +37,13 @@ def isPrimes(number):
     """
     function that determines if a number is prime
     """
-    if number < 2:
-        return False
+    list_primes = []
+    tmp = [True] * (number + 1)  # [True, True, True, ...]
 
-    for i in range(2, int(number ** 0.5) + 1):
-        if number % i == 0:
-            return False
+    for i in range(2, number + 1):
+        if tmp[i]:
+            list_primes.append(i)
+            for j in range(i, number + 1, i):
+                tmp[j] = False
 
-    return True
+    return list_primes
