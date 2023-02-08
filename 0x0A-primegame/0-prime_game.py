@@ -14,12 +14,15 @@ def isWinner(x, nums):
     if x is None or len(nums) == 0:
         return None
 
+    if nums is None or x == 0:
+        return None
+
     maria = 0
     ben = 0
 
     for i in range(x):
         list_n = list(range(1, nums[i] + 1))
-        list_n = [n for n in list_n if isCousin(n)]
+        list_n = [n for n in list_n if isPrimes(n)]
         if len(list_n) == 0:
             ben += 1
         elif len(list_n) % 2 == 0:
@@ -29,17 +32,19 @@ def isWinner(x, nums):
 
     if maria > ben:
         return "Maria"
-    return "Ben"
+    elif ben > maria:
+        return "Ben"
+    return None
 
 
-def isCousin(number):
+def isPrimes(number):
     """
     function that determines if a number is prime
     """
     if number < 2:
         return False
 
-    for i in range(2, int(number / 2) + 1):
+    for i in range(2, int(number ** 0.5) + 1):
         if number % i == 0:
             return False
 
